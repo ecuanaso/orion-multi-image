@@ -1,0 +1,83 @@
+<template name="addImages">
+	<div class="container-fluid">
+		<a href="#" class="btn btn-default back-btn" style="position:fixed;z-index:9999;">
+	  		<i class="fa fa-chevron-left"></i>
+	  	</a>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="admin-content">
+              
+                <div class="row">
+				    <div class="col-sm-10 col-sm-offset-1">
+				      
+				    
+				      <h1 class="title">				    
+				        Add Images to this album
+					  </h1>
+					  <hr>
+				     <!--  <h3 class="text-center">Drag and drop image on the target area</h3> -->
+				     {{> upload_bootstrap multiple=true formData=myUploadFormData autostart="true" }}
+						<br>
+					  <div class="well">
+						{{#with image }}
+						 <h2 class="page-title" style="color:#323436;font-family: sans-serif;">{{ title }}</h2>
+						 <br>
+						 <div class="row">
+						 	<div class="col-lg-12">
+						 		{{#if Template.subscriptionsReady}}
+						 		{{#each images }}
+						 		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+					                <a class="thumbnail" href="#">
+					                    <img class="img-responsive" src="{{ url }}" alt="">
+					                </a>
+
+						            <a href="#" class="btn btn-danger deleteUpload">Delete</a>
+						            <a href="#" class="btn btn-success editButton" data-toggle="modal" data-target="#myModal">Edit</a>
+						            <br>
+					            </div>
+					            {{/each }}
+					            {{else}}
+									    {{> myLoadingTemplate }}
+							    {{/if}}
+						 	</div>
+						 </div>
+					  	{{/with }}
+				      </div>
+	    				
+	        
+	              
+		            </div>
+	            </div>
+	        </div>
+	      </div>
+	    </div>
+    </div>
+	{{> editButtonDialog }}
+</template>
+
+<template name="editButtonDialog">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Edit Image</h4>
+	      </div>
+		 <div class="modal-body">
+		  <div class="form-group">
+		    <!-- <label for="title">Content</label>
+		    <textarea class="form-control" rows="5" id="title" placeholder="Enter a Title" value="{{ title }}"></textarea> -->
+		    <label for="imageName" class="control-label">Image Title</label>
+            <input type="text" class="form-control" id="imageName" value="{{ imageId }}">
+		   <!--  <input type="text" class="form-control" id="title" placeholder="Enter a Title" value="{{title }}" > -->
+		  </div>
+		</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary updateImageName">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</template>
