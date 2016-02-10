@@ -4,7 +4,7 @@ Package.describe({
   // Brief, one-line summary of the package.
   summary: 'Multi-image upload for orion',
   // URL to the Git repository containing the source code for this package.
-  git: '',
+  git: 'https://github.com/aldeed/meteor-simple-schema/blob/master/package.js',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -24,7 +24,8 @@ Package.onUse(function(api) {
   );
   api.use([
     'ecmascript', 
-    'orionjs:core@1.7.0', 
+    'orionjs:core@1.7.0',
+    'aldeed:simple-schema@1.5.3' 
     // 'tomi:upload-jquery@2.2.0', 
     // 'tomi:upload-server@1.3.3',
     'iron:router@1.0.12',
@@ -60,7 +61,7 @@ Package.onUse(function(api) {
 
     ], "server");
 
-  api.export(['orion']);
+  api.export(['GalleryAlbums']);
 
 });
 
